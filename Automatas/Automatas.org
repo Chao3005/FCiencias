@@ -1,0 +1,6 @@
+* Introducción
+* Apuntes
+** 30/01/2024
+*** Diferencia entre recursividad e inducción
+- Recursivo: Algo que se define sobre si mismo
+- Inducción: Principio para razonar sobre estructuras recursivas

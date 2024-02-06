@@ -1,0 +1,277 @@
+* Introducción
+Francisco Hernándex Quiroz
+e-mail: fhq@ciencias.unam.mx
+Página web: http://lya.fciencias.unam.mx/fhq/
+
+** Temario
+
+1. Inducción y recursión
+2. Cálculo de proposiciones
+3. Cálculo de predicados
+4. Programación lógica y bases de datos
+5. Lógicas modales
+6. Verificación de programas y otras aplicaciones de lógica modal
+
+** Método de trabajo y evaluación
+El curso será presencial pero la asistencia de las clases no es obligatoria y
+los alumnos con problemas de movilidad o con capacidad autodidacta sólo tendrán
+que asistir a los exámenes.
+
+Además de la parte teórica, se realizaran prácticas de programación.
+
+Habŕa seis tareas y tres exámenes (una tarea por tema y un examen cada 2 temas)
+y 2 reposiciones de ecámenes parciales o un final. Tambien habrá seis prácticas
+de programación. Los exámenes contarán el 70% de la calificación, las tareas el
+15% y las prácticas el 15% restante.
+
+* Apuntes
+** 04/02/2024
+*** Relaciones entre la lógica y la computación
+**** ¿Qué es la lógica?
+
+La lógica se ocupa de argumentos: una serie de premisas de la que se sigue una
+conclusión. Para la lógica, la verdad de un argumento no tiene que ver con su
+contenido, sino con su forma:
+
+***** Ejemplos
+
+Premisas:
+- Todas las personas son mortales
+- Sócrates es una persona
+
+Conclusión:
+- Sócrates es mortal
+
+Premisas:
+- Todos los bolovogos son misófilos.
+- EL Jabberwock es un bologovo.
+
+Conclusión:
+- El Jabberwock es un misófilo.
+
+***** Sintaxis y semántica
+
+Un lenguaje lógico consta de:
+
+- Sintaxis
+  Son reglas que dicen qué cadenas de símbolos pertenecen al lenguaje.  Por
+  ejemplo, /p => q/ es una fórmula del cálculo de proposiciones, pero /=> p)/ no
+  lo es.
+
+- Semántica
+  Son reglas que la relacionan las fórmulas con un universo de significado. Por
+  ejemplo, si
+
+  - /p/ significa "México perdio con Italia" y
+
+  - /q/ significa "México le ganó a Croacia", entonces
+
+  - /!p^q/ significa "México no perdio con Italia y le ganó a Croacia
+
+***** Sistemas de demostración
+
+Un tercer elemento de un sistema lógico son las:
+
+- Reglas de derivación
+  Son las reglas que nos permiten derivar una fórmula a partir de otras.
+
+  Ejemplo: /modus ponens/
+  Que nos permite concluir /q/ a partir de /p => q/ y /p/
+
+  $\frac{p \Rightarrow q, \; p}{q}$
+
+**** Origen de las computadoras
+
+- EL origen de (los modelos matemáticos de) las computadoras reside en parte en
+  la lógica.
+
+- Leibniz planteó la posibilidad de tener un lenguaje que expresara todo el
+  conocimiento posible y permitiera razonar infaliblemente.
+
+- Hilbert retomó esta idea en el siglo /XX/, aunque limitada al conocimiento
+  matemático, y con la lógica como lenguaje formal.
+
+***** Problema de la decisión
+
+Hilbert formuló de manera más precisa la cuestión:
+
+¿Podemos responder siempre la pregunta de si un enunciado es válido por medio de
+un procedimiento efectivo?
+
+***** Procedimiento efectivo
+
+- Por supuesto, antes hay que definir con rigor qué es un procedimiento efectivo
+
+- La respuesta la dio Alan Turing (entre otros)
+
+- Y como resultado "colateral" presentó el modelo más general de computadora que
+  se conoce hasta ahora.
+
+- Este modelo inspiró a algunos de los creadores de las computadoras modernas.
+
+Por cierto, el problema de la decisión es insoluble; y el sueño de Leibniz y
+Hilbert, irrealizable.
+*** Descripción y análisis de lenguajes
+**** Lógica aplicada a otros lenguajes formales
+
+- Los programas se describen por medio de sistemas formales conocidos como
+  lenguajes de programación.
+
+- Se pueden aplicar las técnicas de la lógica para estudiar estos sistemas:
+
+  - Descripción de la sintaxis y la semántica
+
+  - Derivación de otros programas a partir de programas ya existentes
+
+  - Especificación y verificación de programas
+
+**** ¿Como garantizar que un programa es correcto?
+
+- Un programa es correcto si realiza la tarea para la que fue diseñado
+
+- Para conseguir este objetivo se puede utilizar la lógica para especificar
+  (describir formalmente) la tarea que debe realizar un programa.
+
+- Verificar que el programa cumple con esta tarea
+
+Nota: las pruebas por ensayo y error no son suficientes para concluir que un
+programa es correcto.
+
+**** Especificación de un programa
+
+- La lógica puede describir sin ambigüedades las tareas que debe realizar un
+  programa.
+
+- Ejemplo: queremos un programa /P/ que calcule el factorial del número /n/
+  alojado en la localidad de memoria /x/ y guarde el resultado en la localidad
+  /r/  - En términos lógicos: $\{ x = 0 \wedge n \geq 0 \}P\{r = !n\}$
+*** Verificación de un programa
+
+- Es la comprobación matemática de que un programa funciona
+
+- ¿Cómo se verifican los programas? Se comprueba la siguiente relacion:
+
+  Significado de programa <=> Especificación formal
+
+**** ¿Qué pasa cuando no se verifican los programas?
+
+- Ejemplo 1: /el control de la propulsión del Boeing 737/.
+  El sistema se apagaba cuando el avión alcanzaba la velocidad de 60 nudos. Los
+  programadores indicaron qué hacer a más de 60 nudos y a menos de 60 nudos,
+  pero olvidaron decir qué pasaba exactamente a 60 nudos.
+
+- Ejemplo 2: /el Skylab/
+  Se desplomó por un error de asignación de valor a una variable. El valor era
+  un número de punto flotante, pero la variable era entera. La acumulación de
+  errores causí una desviación en la órbita del satélite.
+
+**** Técnicas para la verificación
+
+Hay 2 tipos de técnicas de verificación
+
+***** Verificación de modelos
+
+- En verificación de modelos se exploran los posibles estados de un sistema y se
+  demuestra que se cumple una propiedad
+
+- Es una técnica común en la verificación de /hardware/ y de sistemas
+  concurrentes  - Con frecuencia se basa en lógicas no clásicas
+***** Técnicas de demostración
+
+- Se basan en reglas de derivación sintáctica
+
+- Algunas son totalmente automatizables
+
+- Un ejemplo es un sistema basado en la aritmética de Pressburger llamado Spec#
+
+- Spec# permite verificar programas en C#
+
+*** Otras tres áreas de aplicación directa de la lógica
+**** Programación logica
+
+Los programas son las premisas y la salida del programa es la conclusión. Si
+/F(x,y)/ quiere decir "/y/ es el factorial de /x/", entonces podemos tener este
+programa lógico:
+
+Premisas:
+
+- F(0,1)
+
+- F(1,1)
+
+- $\forall x, \; \forall y \; F(x,y) \Rightarrow F(x+1,y \times (x+1))$
+
+- ¿F(3,x)?
+
+Conclusión:
+
+- F(3,6)
+
+**** Bases de datos
+
+Si en una base de datos hay un registro de la siguiente forma:
+
+- Nombre: Francisco Hernández Quiroz
+- Profesión: Profesor
+- Institución: UNAM
+
+Una búsqueda en la base de datos con la pregunta "¿profesión = investigador?" es
+una demostración del enunciado:
+
+$\exists x \; p(x)=i$
+
+Donde p(x) es una función que nos da la profesión de /x/ e /i/ significa
+"investigador"
+
+**** Sistemas expertos y representación del conocimiento
+
+- La lógica es una de las técnicas básicas en inteligencia artificial
+
+- Un sistema experto es un sistema de demostración lógico y con principios que
+  describen el dominio específico del sistema (por ejemplo, un sistema de
+  consulta médica)
+
+- Los principios cumplen el papel de las /premisas/. La respuesta a la consulta
+  es la /conclusión/
+
+**** Aplicaciones a otras ciencias
+
+- Las técnicas surgidas de la interacción entre lógica y computación se aplican
+  ahora a otras disciplinas.
+
+- Un ejemplo es la teoría de la concurrencia y su utilización en lógica.
+
+***** Modelos formales para concurrencia
+
+- Los sistemas concurrentes implican la interacción simultánea entre distintos
+  componentes.
+
+- Existen diversos lenguajes formales para representar esta interacción
+
+- Algunos de los más populares son las álgebras de procesos
+
+- Estas álgebras suelen estar acompañadas por lenguajes lógicos para su
+  especificación y verificación
+
+***** Aplicaciones en biología
+
+- Las álgebras de procesos y sus lógicas se utilizan para modelar sistemas
+  biológicos
+
+- Ejemplo 1:
+  Las señales bioquímicas en una celula
+
+- Ejemplo 2:
+  La interacción entre genes
+
+- Ejemplo 3:
+  Los componentes celulares delimitados por membranas
+
+***** Lógica y computación
+
+- La lógica no es una materia más que hay que superar para obtener un título en
+  computación
+
+- La lógica tiene una relación larga y fructífera con las ciencias de la computación
+
+- También empieza a producir resultados aplciables en otras ciencias

@@ -1,0 +1,42 @@
+* Introducción
+Este curso de Redes Neuronales, impartido desde una perspectiva de Ciencias de
+la Computación, pone especial enfásis en los fundamentos matemáticos detras del
+funcionamiento de las redes. A diferencia de otros cursos cuyo principal
+objetivo puede ser la rápida configuración y utilización de grandes
+arquitecturas de redes, este curso invierte más dedicación a los aspectos
+teóricos de funcionamiento de las redes; cabe mencionar que este tampoco es un
+curso de cálculo u optimización numérica, sino que hacemos uso de éstos para
+entrenar redes.
+
+En la parte práctica se trabajará en dos niveles:
+
+- Primeros principios: implementando las operaciones fundamentales haciendo uso
+  de *numpy* para manejo de matrices y cálculos númericos.
+
+- Aplicaciones: haciendp uso de *PyTorch* para enfocarse más en el diseño,
+  entrenamiento y evaluación de la arquitectura, que en los detalles de
+  implementación del cálculo numérico.
+
+** Criterios de evaluación
+- Parciales 40%
+- Cuestionarios 15%
+- Prácticas 40%
+- Proyecto 15%
+
+** Temario
+
+1. Neurona biológica
+2. Aprendizaje de máquina
+3. Preceptrón multicapa
+4. Optimización de entrenamiento
+5. Casos, análisis e interpretación
+6. Neuroevolución
+7. Mapeos autoorganizados
+8. Redes neuronales convolucionales
+9. Redes neuronales recurrentes
+10. Atención
+11. Programador neural
+12. Transformadores para LLM (large language models)
+13. Composicionalidad
+14. Redes de Hopfield
+15. Redes adversarias

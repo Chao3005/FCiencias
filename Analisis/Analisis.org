@@ -1,0 +1,272 @@
+* Introducción
+Análisis de algoritmos
+Jesús Nestaly Marin Nevárez
+nestaly@ciencias.unam.mx
+** Dinámica del curso
+En las clases se presentan conceptos y técnicas de análisis y diseño de
+algoritmos. Esto es acompañado de ejemplos en los que se aplican los conceptos
+así como de demostraciones formales en algunos casos.
+
+En las tareas se incluyen ejercicios y problemas similares a los vistos en clase
+que tienen por objectivo la aplicación de los conceptos y técnicas de
+demostración vistas en clase.
+
+El objetivo de las ayudantías teóricas será acompañar a los alumnos en la
+resolución de las tareas, lo cual incluye realizar ejemplos complementarios y
+discutir las dudas presentadas por los alumnos.
+
+Tanto en las clases como en las ayudantías se espera la participación activa de
+los alumnos.
+
+** Evaluación
+Se encargaran de 5 a 6 tareas a lo largo del curso y se realizarán 2 exámenes.
+Los exámenes se pueden realizar únicamente de manera presencial. No habrá
+exámenes de reposición.   - 50% Tareas - 50% Examenes - Participaciones: Pueden
+ayudar a redondear el promedio final
+
+** Tareas
+- Tareas con latex, podrian tener puntos extra
+- Cada dia de retraso en la entrega de la tarea, es un punto menos en la calificación
+- No copiar
+
+** Temario
+1. Conceptos básicos
+   1. Problemas y algoritmos:
+      Especificación de un problema por su entrada y la salida esperada;
+      Instancias de un problema; Algoritmo; Algoritmo correcto
+
+   2. Tipos de problemas:
+      Optimización; Desición; Enumeración; Salida General
+
+   3. Complejidad:
+      Problemas tratables e intratables; Reducciones; Clases de problemas de
+      decisión; Peor caso, mejor caso y caso promedio
+
+   4. Modelos de cómputo:
+      Modelo RAM
+
+2. Justificación y diseño de algoritmos
+
+   1. Notación asintótica:
+      Propiedades de los órdenes de crecimiento asintóticos; Dominancia;
+      Operaciones con notación asintótica
+
+   2. Algoritmos iterativos:
+      Estrategia; Invariantes de ciclo
+
+   3. Algoritmos recursivos:
+      Estrategia; Demostraciones por inducción
+
+   4. Diseño de algoritmos:
+      Técnicas de diseño de algoritmos (divide y vencerás, algoritmos greedy,
+      programación dinámica, algoritmos aleatorizados, algoritmos de
+      aproximación, etc)
+
+3. Divide y vencerás
+
+   1. Estrategia:
+      Ejemplo inicial (Sugerido: MergeSort)
+
+   2. Relaciones de recurrencia:
+      Teorema maestro; Método de Sustitución; Árbol de recursión
+
+   3. Busqueda binaria
+
+   4. Mediana y k-selección:
+      Demostración de método de sustitución
+
+   5. Quicksort
+
+4. Algoritmos que involucran secuencias y conjuntos
+
+   1. Ordenamiento:
+      Cota mínima; Ordenamiento en tiempo lineal (CountingSort, RadixSort)
+
+   2. Árboles binarios-Montículos:
+      Colas de prioridad; Montículos (heaps); HeapSort; Árboles binarios de
+      búsqueda
+
+   3. Diccionarios:
+      Comparación de operaciones con listas ligadas, arreglos y árboles binarios
+      de busqueda
+
+5. Algoritmos para teoría de gráficas 1
+
+   1. Algoritmos de búsqueda:
+      Búsqueda pora anchura; Búsqueda por profunidad
+
+   2. Trayectorias más cortas desde una fuente:
+      Algoritmo de Dijkstra
+
+   3. Árbol generador de peso mínimo:
+      Propiedad de corte; Algoritmo de Prim; Algoritmo de Kruskal
+
+6. Algoritmos greedy
+
+   1. Estrategia:
+      Subestructura óptima
+
+   2. Ejemplos:
+      Códigos de Huffman; Calendarización
+
+7. Programación dinámica
+
+   1. Estrategia:
+      Diferencia entre greedy y programación dinámica; Subproblemas superpuestos
+      (overlapping subproblems)
+
+   2. Calendarización de intervalos con pesos
+
+   3. Multiplicació de matrices
+
+8. Algoritmos para teoría de gráficas 2
+
+   1. Trayectoria más corta entre todos los pares:
+      Algoritmo de Floyd-Warshall
+
+   2. Algoritmos de redes de flujos:
+      Redes residuales; Caminos de aumento; Algoritmo de Ford-Fulkerson
+
+** Bibliografía
+https://drive.google.com/drive/folders/1-Pf5xxLHemlSGb2oAPFwxGCrMqAEOJOU
+* Apuntes
+** 30/01/2024
+*** Problemas y algoritmos
+**** Algoritmo
+Es un procedimiento computacional (ejecutable de forma mecánica) para realizar
+cierta tarea
+
+- Definido de forma precisa
+- Entrada: Conjunto de valores
+- Salida: "Resultado" del algoritmo
+- Secuencia de instrucciones "elementales" (Simple)
+- Explícito, sin ambiguedad
+- El problema a resolver especifica la entrada y salida de un algoritmo
+
+**** Problema
+Tarea a resolver, especificada por el conjunto de instancias que recibe como
+entrada y la salida que resulta al resoverlo en una de esas instancias
+
+**** Ejemplo: Problema ordenamiento
+- Problema: Ordenamiento
+- Entrada: Una secuencia de /n/ valores <a_1, a_2, ..., a_n>
+- Salida: Una permutación <a'_1, a'_2, ..., a'_n> tal que a'_1 <= a'_2 <= ... <= a'_n
+
+- Instancia: Caso particular de la entrada (ej <2,7,1,4,9,3>)
+- Tamaño de una instancia: número de valores (ej. anterior n=6)
+
+**** Algoritmo correcto
+Un algoritmo es correcto si, para cada instancia de entrada de un problema,
+regresa la salida correcta o buscada. Cuando eso sucede, se dice que el
+algoritmo *resuelve* el problema
+
+**** Ejemplo: MalOrdenamiento(A)
+- Entrada: Secuencia de valores A
+
+PASOS
+1. Generar cada posible permutación de A
+2. Recorrer en orden y comprobar si cada valor es mayor o igual que el anterior
+3. Si lac condición falla, ir a la próxima permutación
+4. Si la condición no falla,A esta en orden, regresar A
+
+Complejidad: n*n!
+
+**** Ejemplo: InsertionSort(A)
+- Entrada: Arreglo de tamaño /n/ (A[1,2,3,...,n])
+Algoritmo de tipo iterativo
+
+PSEUDOCÓDIGO
+1. desde j=2 hasta n
+2. -val = A[j]
+3. -i = j-1
+4. -mientras (i > 1) y (A[i] > val)
+5. --A[i+1] = A[i]
+6. --i = i-1
+7. -A[i+1] = val
+
+** 1/02/2024
+*** Tipos de problemas algoritmicos
+1. Optimización
+   Un problema de optimización, es aquel que busca una respuesta máxima o mínima
+
+2. Decisión
+   Un problema couya respuesta puede reducirse o entenderse solamente como "si" o "no"
+
+3. Enumeración o busqueda
+   Determinar cierta cantidad de objetos que cumplan con cierta propiedad
+
+4. Salida general
+   Cualquier otro problema que no cumpla ninguna descripción anterior
+
+*** Complejidad
+Podemos referirnos a la complejidad en el peor caso, caso promedio o en el mejor
+caso. Usualmente nos referimos a a la complejidad en el peor caso.
+**** Complejidad computacional
+Hace referencia a que tan "difícil" es un problema. Podemos verlo como la
+cantidad aproximada de "pasos" que necesitamos para resolver el problema
+
+Un problema con complejidad polinomial denotada como O(n^k) hace referencia que
+existe un polinomio de literales /n/ y orden /k/ que describe la complejidad
+respecto al tamaño de la entrada /n/
+
+**** Complejidad espacial
+La cantidad de recursos de memoria que necesita un algoritmo para obtener la
+solución al problema
+
+**** Problemas tratables e intratables
+Un problema es tratable si puede ser resuelto por una máquina de Turing
+determinista en tiempo polinomial, de lo contrario es intratable
+
+*** Reducción
+A se reduce a B, si cualquier instancia de A se puede convertir a una instancia
+de B tal que la solución en B nos dé una solución para A.
+
+A <=_p B si A se reduce a B en tiempo polinomial
+
+*** Clases de problemas
+- *P (polinomial)*
+
+  Se conocen algoritmos deterministas de tiempo polinomial
+
+- *NP (no determinista polinomial)*
+
+  Aquellos que pueden ser resueltos en tiempo polinomial por una maquina de
+  Turing no determinista.  Tambien podemos definirlo como, dada una posible
+  solución para una instancia, podemos determinar si es correcta de forma
+  determinista en tiempo polinomial.
+
+- *NP-completos*
+
+  Un problema L_1 es NP-completo si:
+
+  1. Está en NP
+
+  2. Todo problema en L_2 \subset NP puede ser reducido a L_1 en tiempo polinomial
+
+- *NP-hard*
+
+  Tán difícil como cualquiera en NP
+
+  - No necesariamente se puede verificar en tiempo polinomial
+
+  - Un problema L es NP-hard si existe un problema L' NP-completo y L' <=_p L
+
+Tambien existen problemas decidibles, indecidibles referentes tambien al Halting problem
+
+*** Modelos de cómputo
+**** Modelo de cómputo RAM (Random-access memory)
+Operaciones básicas toman tiempo constante O(1)
+
+*Operaciones básicas*
+- Leer un objeto de tamaño pequeño O(1) de la memoria
+
+- Operaciónes aritméticas entre 2 valores
+
+- Comparar objetos pequeños (if, =, >, <)
+
+*Operaciones no básicas*
+- Ejecutar un bucle
+
+- Llamar a una subrutina compleja
+
+- Operaciones aritméticas con varios números
