@@ -204,8 +204,57 @@ computadora procesa datos.
 |---------------------------+---------------------------+--------------------------|
 |                           | Memoria secundaria        |                          |
 
+**** Hardware y Software
+
 Los componentes físicos de una computadora (unidad central de proceso, memoria y
 dispositivos de entrada/salida) se conocen con el nombre genérico de *hardware*.
 Los programas y datos sólo existen como pulsos electrónicos que se encuentran en
 la memoria, y se les conoce con el nombre genérico de *software*. Una serie de
 instrucciones que realiza una tarea en particular se le llama *programa*.
+
+Las dos categorías más importantes en que se clasifica el /software/ son:
+***** Software
+****** Software del sistema
+
+El *software del sistema* se refiere a los programas que se utilizan para
+controlar la computadora y desarrollar y ejecutar /software de aplicación/ (o
+simplemente aplicaciones).
+
+****** Software de aplicación
+
+El *software de aplicación* es cualquier entrada de datos, actualización,
+solicitud, reporte u otro programa que procesa datos para el usuario. El
+/software de aplicación/ incluye los paquetes genéricos de /software/ (hojas de
+calculo, procesadores de palabras, programas de bases de datos, etc) así como
+programas de paquetería o hechos a la medida como nóminas, pagos, inventarios, y
+otros.
+***** Hardware
+
+El /hardware/ se encarga del almacenamiento  y la transmisión. Mientras más
+memoria y almacenamiento en disco tenga una computadora, más trabajo puede
+realizar. Mientras más rápida sea la memoria y los discos para transmitir datos
+e instrucciones al CPU, más rápido se realiza el trabajo.
+
+*** Estudiando la arquitectura de sistemas de cómputo
+
+La siguiente tabla muestra como se construyen diferentes niveles de estudio y
+abstracción sobre descripciones más simples. Aquí, de abajo hacia arriba, se
+comienza describiendo a los elementos lógicos que forman los bloques básicos de
+construcción del /hardware/ de un sistema de cómputo, y que se combinan para
+obtener una máquina simple de cómputo. Después de esto, se provee alguna
+información introductoria de los sistemas operativos. Los dos últimos niveles
+más altos en el estudio de sistemas de cómputo, lenguajes de programación de
+alto nivel y aplicaciones, no forman parte del objeto de estudio de este curso.
+
+| aplicaciones      |
+|-------------------|
+| lenguajes de      |
+| programación de   |
+| alto nivel        |
+|-------------------|
+| sistema operativo |
+|-------------------|
+| máquina           |
+|-------------------|
+| elementos lógicos |
+
