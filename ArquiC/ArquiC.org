@@ -258,3 +258,18 @@ alto nivel y aplicaciones, no forman parte del objeto de estudio de este curso.
 |-------------------|
 | elementos lógicos |
 
+
+** 06/02/2024
+*** Sistema numérico binario
+
+El sistema utilizado en las computadoras para representar y procesar datos e
+información es el *sistema numérico binario*, o base 2. Cualquier número puede
+representarse usando dos simbolos: /0/ y /1/, mediante utilizar la misma
+notación posicional como en el sistema decimal. Un dígito binario se conoce como
+*bit* (*b* inary dig *it*)
+
+*¿Cuantos bits se necesitan?* La regla general es con /n/ bits se pueden
+ representar los números del 0 al (2^n-1). En un sistema de cómputo, un grupo de
+ 8 bits se conoce como /byte/ y puede representar números del 0 al 255.
+
+*** Sistemas octal y hexadecimal

@@ -275,3 +275,237 @@ Donde p(x) es una función que nos da la profesión de /x/ e /i/ significa
 - La lógica tiene una relación larga y fructífera con las ciencias de la computación
 
 - También empieza a producir resultados aplciables en otras ciencias
+
+** 06/02/2024
+*** Inducción  y recursión
+**** Conjuntos inductivos
+***** Definiciones "circulares"
+
+Es común definir un conjunto de manera "circular". Por ejemplo, las fórmulas del
+cálculo de proposiciones:
+
+"Si $\varphi$ y $\psi$ son proposiciones, entonces $\neg \varphi$ y $\varphi
+\lor \psi$ son proposiciones"
+
+Si la deifinición anterior fuera realmente circular, sería incorrecta. En
+realidad, el conjunto anterior está definido de manera /inductiva/. Una
+definición inductiva parte de un conjunto básico y de un conjunto de funciones
+para generar nuevos elementos.
+
+- /Nota:/
+  En algunos textos se llama /recursivas/ a estas definiciones. Esto es un error
+  terminológico.
+
+***** Conjuntos inductivos
+
+Sea $A \subseteq U$ un conjunto y sea $F = \{f_i^n : U^n \rightarrow U \}$
+un conjunto de funciones. Diremos que A es cerrado bajo F sii
+
+$\forall f_k^n \in F$ y $\forall a_1,a_2,\cdots,a_n \in A$ resulta que
+$f_k^n(a_1,a_2,\cdots,a_n) \in A$
+
+Sea $X \subseteq U$. Entonces un conjunto $Y \subseteq U$
+es inductivo en X bajo F sii
+
+$X \subseteq Y$ y Y es cerrado bajo F
+
+***** Cerradura inductiva
+
+Sea $X \subseteq U$ y sea $F=\{f_i^{n} : U^{n} \rightarrow U\}$ un conjunto de funciones.
+
+La /cerradura inductiva/ de X bajo F, construida de abajo hacia arriba, es:
+
+$X_0 = X$
+$X_{i+1} = X_i \cup {f_k^{n}(x_1,x_2, \cdots, x_n)} \; | \; f_k^n \in F \land x_1,x_2,\cdots,x_n \in X_i$
+$X_{+} = \bigcup_{i \in \mathbb{N}} X_i$
+
+Sea $\chi$ la familia de conjuntos inductivos en X bajo F. La cerradura
+inductiva de X bajo F, construida de arriba hacia abajo es el conjunto:
+
+$X^{+} = \bigcap_{Y \in \chi} Y$
+
+***** Equivalencia
+
+Ambas definiciones son equivalentes, es decir X_+ = X^+
+
+/Demostración/. Es claro que X_+ es inductivo en X y como X^+ es la intersección
+de los conjuntos inductivos en X, se tiene que $X^+ \subseteq X_+$.
+
+La otra contención se demostrara por inducción matemática:
+
+- Caso base
+  $X_0 = X \subseteq X^+$
+
+- Hipótesis inductiva
+  $X_i \subseteq X^+$
+
+- Por demostrar que $X_{i+1} \subseteq X^+$.
+  Pero esto último se sigue del hecho de que X⁺ es cerrado.
+
+Por inducción, $\forall n \in \mathbb{N}$. $X_n \subseteq X^+$. Entonces $X_+ \subseteq X^+$
+
+***** Ejemplo 1
+Ahora podemos definir el cálculo de proposiciones inductivamente.
+Sea $\Sigma = \{p,q,r,p_1,\cdots\} \cup \{(,)\} \cup \{\lor,\neg\}$ un alfabeto
+y sean $\neg \varsigma : \Sigma^* \rightarrow \Sigma^*$ y  $\lor \varsigma : \Sigma^* \times \Sigma^* \rightarrow \Sigma^*$
+las funciones definidas asi:
+
+$\neg \varsigma (\alpha) = \neg \alpha$
+$\lor \varsigma (\alpha , \beta) = (\alpha \lor \beta)$
+
+Sea $P_a = \{ p, q, r, p_1, \cdots \}$ el conjunto básico. El conjunto de
+fórmulas del cálculo de proposiciones /P/, se define usando los dós métodos:
+
+$P_0 = P_a$
+$F = \{\neg \varsigma, \lor \varsigma \}, \; n \in \{1,2\}$
+$P_{i+1} = P_i \cup \{f_i^n(x_1, \cdots, x_n)\} \; | \; f_i^n \in F, \; x_1, \cdots, x_n \in P_i$
+$P = \bigcup_{i \in \mathbb{N}} P_i$
+
+**** Relaciones bien fundadas
+***** Relaciones binarias
+
+Si 2 elementos a, b de un conjunto están en una relación R se escribirá
+" $(a,b) \in R$ ", " a R b " o " R(a,b) ".
+
+Sea A un conjunto y sea $R \subseteq A \times A$. Se dice que R es:
+
+- *Reflexiva* sii $\forall a \in A \; R(a,a)$
+
+- *Simétrica* sii $\forall a,b \in A \; R(a,b) \Rightarrow R(b,a)$
+
+- *Antisimétrica* sii $\forall a,b \in A \; R(a,b) \land R(b,a) \Rightarrow a=b$
+
+- *Transitiva* sii $\forall a,b,c \in A \quad R(a,b) \land R(b,c) \Rightarrow R(a,c)$
+
+- *Total* sii $\forall a,b \in A \quad a \neq b \Rightarrow R(a,b) \land R(b,a)$
+***** Cerraduras reflexivas y transitivas
+
+Dada una relación R en A x A se puede construir sus cerraduras /transitiva/ y
+/reflexiva y transitiva/, denotadas por R⁺ y R^*, respectivamente:
+
+$R^0 = \{(a,a) \; | \; a \in A\}$
+$R_1 = R$
+$R^{n+1} = R^n \cup \{(a,c) | \exists b \quad (a,b) \in R^n \land (b,c) \in R^n\}$
+$R^+ = \bigcup_{n \in \mathbb{N}} R^{n+1}$
+$R^* = \bigcup_{n \in \mathbb{N}} R^n$
+***** Órdenes
+
+En matemáicas hay un tipo de relaciones muy comunes llamadas órdenes. Sin
+embargo, los órdenes vienen en distintos sabores.
+
+- Una relación R es un *pre-orden* (o *cuasi-orden*) sii es reflexiva y transitiva
+
+- Un *orden parcial* (o *poset*) es una relación reflexiva, transitiva y aintisimétrica
+
+- Un *orden total* o *lineal* es simplemente una relación total.
+  Observese cómo no se supone que tenga ninguna otra propiedad
+
+****** Ejemplos
+
+- El orden parcial más conocido es $\leq$ en $\mathbb{N}$
+
+- En el mismo conjunto, < es un orden total
+
+- Un ejemplo de pre-orden en $P(\mathbb{N})$ es el /preorden inferior/ o de
+  /Hoare/:
+
+  $A \sqsubseteq_L B$ sii $\forall a \in A. \; \exists b \in B. \; a \leq b$
+
+
+Se usaran con frecuencia los simbolos $\prec$ y $\succ$ para denotar
+relaciones de orden arbitrarias.
+***** Órdenes en n-adas
+
+Una relación de orden en A se puede extender a A^n en dos formas:
+
+****** Orden lexicográfico
+
+La relación $\prec_{lex} \subseteq (A \times A) \times (A \times A)$ se define asi:
+
+
+
+$(a,b) \prec_{lex} (a',b')$ sii $a \prec a'$ y $a \neq a'$ o $a=a'$ y $b \prec b'$
+
+La definición anterior se extiende a A^n de la misma forma en que se extiende el
+concepto de par ordenado a n-adas arbitrarias.
+
+****** Orden por coordenadas
+
+$\prec_{coor}$ es la siguiente relación:
+
+$(a,b) \prec_{coor} (a',b')$ sii $a \prec a'$ y $b \prec b'$,
+
+que se extiende del miso modo a n-adas arbitrarias.
+
+***** Máximos, minimos, etc
+
+Conviene dar nombre a algunos elementos especiales de un conjunto ordenado:
+
+Sea $\prec$ una relación en AxA y sea $X\subseteq A$. Se dice que
+$x \in X$ es un:
+
+- mínimo sii $\forall y \in X \quad x \neq y \Rightarrow x \prec y$
+
+- máximo sii $\forall y \in X \quad x \neq y \Rightarrow y \prec x$
+
+- minimal sii $\neg \exists y \in X \quad x \neq y \land y \prec x$
+
+- maximal sii $\neg \exists y \in X \quad x \neq y \land x \prec y$
+
+****** Un caso extraño
+
+En un orden parcial, un mínimo es un minimal, pero esto no es necesariamente el
+caso en un preorden. Más adelante se verán otros órdenes en los que los mínimos
+son siempre minimales.
+
+***** Cadenas
+
+Sea $\prec$ un orden en $U \times U$ y sea $C \subseteq U$
+
+Decimos que C es una cadena sii $\forall x,y \in C$ es el caso
+que $x \prec y$ o $y \prec x$
+
+Una cadena descendente infinita es una cadena C tal que $\forall x \in C$,
+$\exists y \in C$ tal que $y \prec x$
+
+De manera dual, una cadena infinita ascendente C tiene la propiedad
+de que $\forall x \in C$, $\exists y \in C$ tal que $x \prec y$
+
+Obsérvese cómo una cadena $C \subseteq U$ es un subconjunto de U que visto de
+manera aislada forma un orden total.
+
+***** Órdenes bien fundados
+
+Las cadenas descendentes nos permiten caracterizar los órdenes bien fundados.
+
+Sea $\prec \subseteq U \times U$ una relación. Decimos que $\prec$ es bien
+fundado sii no existen cadenas infinitas descendentes en U.
+
+Por ejemplo, < en los naturales.
+
+Sea $\prec$ una relación bien fundada. Entonces:
+
+- $\prec$ no es reflexiva ni simétrica
+
+- Su cerradura transitiva es bien fundada
+
+- Los órdenes lexicográficos y por coordenadas basados en $\prec$ son bien fundadas
+
+- $\prec^*$ es un orden parcial
+
+***** Relaciones bien fundadas alternativo
+
+Una relación $\prec$ es bien fundada en $A \times A$ sii todo
+$X \subseteq A \; (X \neq \varnothing)$ tiene un minimal.
+
+***** Principio de inducción
+
+Sea /P/ una propiedad de elementos de A y sea $\prec \subseteq A \times A$
+La siguiente afirmación se conoce como el principio de inducción:
+
+$(\forall a \in A \quad P(a)) \iff (\forall a \in A (\forall b \in A \quad b \prec a \Rightarrow P(b)) \Rightarrow P(a))$
+
+Este principio se aplica en conjuntos donde $\prec$ es un orden bien fundado:
+
+Sea $\prec \subseteq A \times A$ una relación bien fundada y sea /P/ : A => {V,F}
+un predicado. Entonces el principio de inducción vale
