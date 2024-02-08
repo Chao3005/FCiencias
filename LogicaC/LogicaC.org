@@ -509,3 +509,15 @@ Este principio se aplica en conjuntos donde $\prec$ es un orden bien fundado:
 
 Sea $\prec \subseteq A \times A$ una relación bien fundada y sea /P/ : A => {V,F}
 un predicado. Entonces el principio de inducción vale
+
+****** Demostraciones por inducción
+
+El principio de inducción nos da una estrategia para demostrar una propiedad /P/
+en un conjunto A con una relación bien fundada $\prec$
+
+1. Se demuestra que todos los elementos mínimos cumplen /P/
+
+2. Se asume una hipótesis inductiva
+   $\forall b \in A \quad b \prec a \Rightarrow P(b)$
+
+3. Se demuestra que entonces P(a)
