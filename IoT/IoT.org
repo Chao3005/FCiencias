@@ -1,0 +1,7 @@
+* APUNTES
+** 12/02/2024
+*** Sensor de luz
+
+#+BEGIN_SRC arduino
+  Serial.begin()
+#+END_SRC
